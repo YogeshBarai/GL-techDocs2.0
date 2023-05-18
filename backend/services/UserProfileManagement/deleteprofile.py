@@ -15,7 +15,7 @@ from ..ForgotPassword.mail import send_reset_email, verify_reset_token
 from sqlalchemy import create_engine, select, delete
 
 deletecode_bp = Blueprint('deletecode',__name__)
-@deletecode_bp.route('/api/deleteAccount', methods=["GET", "POST"])
+@deletecode_bp.route('/deleteAccount', methods=["GET", "POST"])
 @authentication
 #@login_required
 def delete_account(user_id):  

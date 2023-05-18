@@ -30,7 +30,7 @@ razorPayBlueprint = Blueprint('razorPayBlueprint', __name__)
 
 user_id = ""
 #Home page to accept the transaction information
-@razorPayBlueprint.route('/api/homeRazor.html')
+@razorPayBlueprint.route('/homeRazor.html')
 def home_page():
     return render_template('homeRazor.html')
 
@@ -51,7 +51,7 @@ def create_order(amt,descr):
     order_id = response['id']
     return(order_id)
 
-@razorPayBlueprint.route('/api/razorSubmit', methods = ['POST'])
+@razorPayBlueprint.route('/razorSubmit', methods = ['POST'])
 def app_submit():
     global user_id
     amt_d     = request.form['amt']
@@ -84,7 +84,7 @@ def app_submit():
 
 
 # Return the status of the payment
-@razorPayBlueprint.route('/api/razorStatus', methods=['POST'])
+@razorPayBlueprint.route('/razorStatus', methods=['POST'])
 def app_status():
     pgkeys.r_id = current_app.config["PGKEY_RID"]
     pgkeys.r_key = current_app.config["PGKEY_RKEY"]

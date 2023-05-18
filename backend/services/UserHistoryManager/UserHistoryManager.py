@@ -21,7 +21,7 @@ sys.path.append('../')
 userHistoryManagerBlueprint = Blueprint('userHistoryManagerBlueprint', __name__)
 
 
-@userHistoryManagerBlueprint.route('/api/userhistorymanagerhealth')
+@userHistoryManagerBlueprint.route('/userhistorymanagerhealth')
 def filemanagerhealth():
     print(current_app.config)
     return jsonify({'health':'good'}) 
@@ -68,7 +68,7 @@ def get_user_record_by_email(email):
 ##############################################################################
 # Home API for historymanager
 # Check on HistoryManager service
-@userHistoryManagerBlueprint.route('/api/userHistory', methods = ['GET', 'POST'])
+@userHistoryManagerBlueprint.route('/userHistory', methods = ['GET', 'POST'])
 def home():
     if(request.method == 'GET'):
         data = "HistoryManager home. Allowed endpoints are /history/get; /history/create;"
@@ -80,7 +80,7 @@ def home():
 # Processing: 
 # 1. Create an entry into UserHistory table
 # Output: UserHistoryId
-@userHistoryManagerBlueprint.route('/api/historyCreate', methods = ['GET', 'POST'])
+@userHistoryManagerBlueprint.route('/historyCreate', methods = ['GET', 'POST'])
 def create_user_history():
     data_out = ''
     mess_out = ''
@@ -143,7 +143,7 @@ def create_user_history():
 # 4. If action is share, get the shared email id
 # Output:
 # UserId, DocId, DocName, DocText
-@userHistoryManagerBlueprint.route('/api/historyGet', methods = ['GET', 'POST'])
+@userHistoryManagerBlueprint.route('/historyGet', methods = ['GET', 'POST'])
 @authentication
 def get_user_history(user_id):
     current_app.logger.info("Service history/get initiated")

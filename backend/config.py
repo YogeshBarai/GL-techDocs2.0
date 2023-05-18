@@ -1,18 +1,25 @@
 import os
 from dotenv import load_dotenv
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-env = os.path.join(basedir,'./.env.local')
-if os.path.exists(env):
-    load_dotenv(env)
+# basedir = os.path.abspath(os.path.dirname(__file__))
+env = '/.env.local' # os.path.join(basedir,'/.env.local')
+# if os.path.exists(env):
+load_dotenv(env)
 
 class Config(object):
     DEBUG=False
 
 class DevConfig(Config):
     FLASK_ENV='developement'
+    TESTING=True
     DEBUG=True
-
+    SECRET=os.environ.get('SECRET')
+    DB_CONN=os.environ.get('DB_CONN')
+    DB_NAME=os.environ.get('DB_NAME')
+    DB_USER=os.environ.get('DB_USER')
+    DB_PASS=os.environ.get('DB_PASS')
+    DB_PORT=os.environ.get('DB_PORT')
+    DB=os.environ.get('DB')
 
 class ProdConfig(Config):
     FLASK_ENV='production'

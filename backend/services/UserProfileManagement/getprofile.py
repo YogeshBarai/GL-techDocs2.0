@@ -22,7 +22,7 @@ from ..UserAuthentication.JWTAuthentication import authentication
 getUserProfile_bp = Blueprint('getprofile',__name__)
 #check for user authorisation
 
-@getUserProfile_bp.route('/api/getProfile',methods=['GET','POST'])
+@getUserProfile_bp.route('/getProfile',methods=['GET','POST'])
 @authentication
 def getProfile(user_id):
     if request.method == 'POST':

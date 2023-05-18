@@ -17,7 +17,7 @@ from sqlalchemy import create_engine, select, update
 
 forgotpassword_bp = Blueprint('forgotpassword',__name__)
 
-@forgotpassword_bp.route('/api/forgot-password', methods=['GET','POST'])
+@forgotpassword_bp.route('/forgot-password', methods=['GET','POST'])
 def forgot_password():
     
     if request.method == "POST":
@@ -44,7 +44,7 @@ def forgot_password():
         return jsonify(({"message":"Method not allowed"}),404)
 
 
-@forgotpassword_bp.route('/api/reset-password', methods=['GET','POST'])
+@forgotpassword_bp.route('/reset-password', methods=['GET','POST'])
 
 def reset_password():
     bcrypt = Bcrypt(current_app)
@@ -76,7 +76,7 @@ def reset_password():
 
 
 
-@forgotpassword_bp.route('/api/validate-token', methods=['GET', 'POST'])
+@forgotpassword_bp.route('/validate-token', methods=['GET', 'POST'])
 
 def validate_token():
     if request.method == "POST":

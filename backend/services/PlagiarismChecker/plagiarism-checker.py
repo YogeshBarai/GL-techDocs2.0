@@ -5,7 +5,7 @@ plagiarismCheckerBlueprint = Blueprint('PlagiarismChecker',__name__)
 
 
 
-@plagiarismCheckerBlueprint.route('/api/check_plagiarism', methods=['GET'])
+@plagiarismCheckerBlueprint.route('/check_plagiarism', methods=['GET'])
 def check_plagiarism():
     files = request.files.getlist('files[]')
     file_contents = []

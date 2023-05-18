@@ -25,7 +25,7 @@ from ..UserAuthentication.JWTAuthentication import authentication
 updateUserProfile_bp = Blueprint('updateprofile',__name__)
 
 
-@updateUserProfile_bp .route('/api/updateProfile',methods=['GET', 'POST'])
+@updateUserProfile_bp .route('/updateProfile',methods=['GET', 'POST'])
 #check for user authorisation
 @authentication
 def updateProfile(user_id):

@@ -15,7 +15,7 @@ from ..UserAuthentication.JWTAuthentication import authentication
 from sqlalchemy import create_engine, null, select, delete, update
 
 changepassword_bp = Blueprint('changepassword',__name__)
-@changepassword_bp.route('/api/changePassword', methods=["GET", "POST"])
+@changepassword_bp.route('/changePassword', methods=["GET", "POST"])
 # To check the JWT Token
 @authentication
 def changepassword(user_id):  

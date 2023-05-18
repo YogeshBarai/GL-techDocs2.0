@@ -51,7 +51,8 @@ sentry_sdk.init(
 )
 
 app= Flask(__name__)
-CORS(app, resources={r"/*":{"origins":"*"}})
+print(app)
+CORS(app)
 app.config.from_object('config.DevConfig')
 
 app.register_blueprint(register_bp)

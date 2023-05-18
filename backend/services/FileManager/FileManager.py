@@ -102,7 +102,7 @@ class FileManage:
 # 5. Create an entry into Documents & Permissions table
 # 6. Output: UserId, DocId, DocName, FilePath 
 '''
-@fileManagerBlueprint.route('/api/filecreate', methods = ['GET', 'POST'])
+@fileManagerBlueprint.route('/filecreate', methods = ['GET', 'POST'])
 @authentication
 def file_Create(user_id):
     userid      = 0
@@ -233,7 +233,7 @@ def file_Create(user_id):
 # - we create a new file every time this request is sent to keep history of things
 # 4. Output: UserId, DocId, DocName, FilePath
 '''
-@fileManagerBlueprint.route('/api/filemodify', methods = ['GET', 'POST'])
+@fileManagerBlueprint.route('/filemodify', methods = ['GET', 'POST'])
 @authentication
 def file_Modify(user_id):
     current_app.logger.info("Service File Modify initiated")
@@ -361,7 +361,7 @@ def file_Modify(user_id):
 # 4. Update respective tables - Documents, DocHistory, UserHistory
 # 5. Output: UserId, DocId, DocName
 '''
-@fileManagerBlueprint.route('/api/filerename', methods = ['GET', 'POST'])
+@fileManagerBlueprint.route('/filerename', methods = ['GET', 'POST'])
 @authentication
 def file_Rename(user_id):
     current_app.logger.info("Service File Rename initiated")
@@ -501,7 +501,7 @@ def file_Rename(user_id):
 # 3.a Get the list of active documents of the user
 # 4. Output: UserId, DocumentList
 '''
-@fileManagerBlueprint.route('/api/filegetlist', methods = ['GET', 'POST'])
+@fileManagerBlueprint.route('/filegetlist', methods = ['GET', 'POST'])
 @authentication
 def file_GetList(user_id):
     current_app.logger.info("Service Get Document List initiated")
@@ -556,7 +556,7 @@ def file_GetList(user_id):
 # 3.a Get the list of active documents shared to the user
 # 4. Output: UserId, DocumentList
 '''
-@fileManagerBlueprint.route('/api/getsharedlist', methods = ['GET', 'POST'])
+@fileManagerBlueprint.route('/getsharedlist', methods = ['GET', 'POST'])
 @authentication
 def file_GetSharedList(user_id):
     current_app.logger.info("Service Get Shared Document List initiated")
@@ -604,7 +604,7 @@ def file_GetSharedList(user_id):
 '''
 Api to delete a file
 '''
-@fileManagerBlueprint.route('/api/filedelete', methods=['GET', 'POST'])
+@fileManagerBlueprint.route('/filedelete', methods=['GET', 'POST'])
 @authentication
 def file_delete(user_id):
     userid   = ''
@@ -655,7 +655,7 @@ def file_delete(user_id):
 '''
 Api to view a file
 '''
-@fileManagerBlueprint.route('/api/fileview', methods=['GET', 'POST'])
+@fileManagerBlueprint.route('/fileview', methods=['GET', 'POST'])
 @authentication
 def file_view(user_id):
     userid   = user_id
@@ -701,7 +701,7 @@ def file_view(user_id):
 '''
 Api to mark a file as trash
 '''
-@fileManagerBlueprint.route('/api/filetrash', methods = ['GET', 'POST'])
+@fileManagerBlueprint.route('/filetrash', methods = ['GET', 'POST'])
 @authentication
 def file_trash(user_id):
     current_app.logger.info("Service file/move to trash initiated")
@@ -741,7 +741,7 @@ def file_trash(user_id):
 '''
 Api to mark a file as trash
 '''
-@fileManagerBlueprint.route('/api/fileretrive', methods = ['GET','POST'])
+@fileManagerBlueprint.route('/fileretrive', methods = ['GET','POST'])
 @authentication
 def file_retrive(user_id):
     current_app.logger.info("Service file/retrieve from trash initiated")
@@ -778,7 +778,7 @@ def file_retrive(user_id):
 '''
 Api to get Trash list
 '''
-@fileManagerBlueprint.route('/api/getTrashList', methods=["GET","POST"])
+@fileManagerBlueprint.route('/getTrashList', methods=["GET","POST"])
 @authentication
 def gettrashlist(user_id):
     userid = user_id
