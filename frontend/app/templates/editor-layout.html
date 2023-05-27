@@ -65,6 +65,7 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item" ><a id="button-spellcheck" class="nav-link px-2 link-dark"><i class="bi bi-spellcheck"></i> Spell Check</a></li>
           <li class="nav-item" ><a id="button-pdf" class="nav-link px-2 link-dark"><i class="bi bi-download"></i> Download as PDF</a></li>
           <li class="nav-item" ><a data-bs-toggle="offcanvas" href="#offcanvasAssets"  class="nav-link px-2 link-dark"><i class="bi bi-paperclip"></i> Assets</a></li>
           <li class="nav-item"><a id="historyClick" data-bs-toggle="offcanvas" href="#offcanvasHistory" class="nav-link px-2 link-dark"><i class="bi bi-clock-history"></i> History</a></li>
@@ -170,6 +171,11 @@
 
   <script> 
     $(document).ready(function(){
+
+      var spellCheckBtn = document.getElementById("button-spellcheck");
+      spellCheckBtn.addEventListener("click", function () {
+       spellCheck();
+      });
 
       var downloadPdfBtn = document.getElementById("button-pdf");
       downloadPdfBtn.addEventListener("click", function () {

@@ -152,7 +152,7 @@ In the appendix, the API as well as the format of custom macro definitions in Ja
       var text = $editor.value;
       var generator = new latexjs.HtmlGenerator({ hyphenate: false });
       lDoc = latexjs.parse(text, { generator: generator }).htmlDocument('https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/');
-      
+
       $($htmlPreview).attr('srcDoc',lDoc.documentElement.outerHTML);
       
       if(type=='print'){
@@ -166,6 +166,21 @@ In the appendix, the API as well as the format of custom macro definitions in Ja
       }
       else saveFile()
       
+    }
+
+    function spellCheck(){
+      console.log('---- INSIDE SPELL CHECK ----')
+      var text = $editor.value;
+      var generator = new latexjs.HtmlGenerator({ hyphenate: false });
+      lDoc = latexjs.parse(text, { generator: generator }).htmlDocument('https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/');
+      console.log(lDoc.documentElement.outerHTML)
+      // #POST Request
+      request_obj = {
+        "check_for": text
+      }
+      
+
+      console.log('---- POST IMPLEMENTATION PENDING ----')
     }
 
 </script>
