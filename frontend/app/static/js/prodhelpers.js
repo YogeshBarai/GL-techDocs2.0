@@ -1,9 +1,10 @@
-var rootTestApiUrl = "http://localhost:9999/api/"
+var rootTestApiUrl = "http://localhost:5000/"
 var rootApiUrl = "http://techdocs-api.previewbox.in/api/";
-var testing=false;
+var testing=true;
 //56733
 //6622
 var rootFrontEndUrl = "http://techdocs.previewbox.in/";
+var rootFrontEndTestUrl = "http://localhost:56733/";
 function getApiUrl(api)
 {
     if (testing)
@@ -14,7 +15,10 @@ function getApiUrl(api)
 }
 function getFrontEndUrl(path)
 {
-    return rootFrontEndUrl+path;
+    if(testing)
+        return rootFrontEndTestUrl+path;
+    else
+        return rootFrontEndUrl+path;
 }
 
 function getUserToken()

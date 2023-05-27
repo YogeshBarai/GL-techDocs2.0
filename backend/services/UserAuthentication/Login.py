@@ -21,7 +21,7 @@ from sqlalchemy import create_engine, select, update
 
 userLogin_bp = Blueprint('login',__name__)
 
-@userLogin_bp.route('/api/signin', methods=['GET', 'POST'])
+@userLogin_bp.route('/signin', methods=['GET', 'POST'])
 def signin():
     bcrypt = Bcrypt(current_app)
     if request.method == 'POST':
@@ -69,22 +69,31 @@ def signin():
             password = request.form.get('password')
             # password = content["password"]
             if password:
+                print('Inside email login')
                 session = session_factory()
                 sql_stmt = (select(User.UserId, User.IsAdmin, User.Password, User.LoginType).where (User.UserName == username))
                 sql_stmt_2 = (select(UserProfile.FirstName, UserProfile.LastName).where(UserProfile.UserName == username))
                 result_2 = session.execute(sql_stmt_2).first()
                 result = session.execute(sql_stmt).first()
+                print(result)
                 session.close()
 
                 if result:
-            
+                    print('inside result')
+                    print(result[3])
                     if result[3] == "google":
                         data_sent = {"message":"User registered with google please login via google"} 
                         return make_response(jsonify(data_sent),401)
 
         # if the user is registered
                     if result[0]:   
+                        print(result[0])
+                        print('CHECKING PASSWORD')
+                        print(result[2])
+                        print(password)
+                        print(bcrypt.check_password_hash(result[2], password))
                         if bcrypt.check_password_hash(result[2], password):
+                            print(current_app.config["SECRET"])
                             key = current_app.config["SECRET"]
                             admin = result[1]
                             firstname = result_2[0]
@@ -98,6 +107,9 @@ def signin():
                                                 "isAdmin":admin,
                                                 "FirstName":firstname,
                                                 "LastName":lastname}
+                            print(data_sent)
+                            print(jsonify(data_sent))
+                            print(make_response(jsonify(data_sent), 200))
                             return make_response(jsonify(data_sent), 200) 
                         else:
                             data_sent = {"message":"Invalid Password"} 

@@ -33,7 +33,6 @@ from services.Permissions.permissions import permissions_bp
 # For logging 
 from sentry_sdk.integrations.flask import FlaskIntegration
 
-
 sentry_sdk.init(
     dsn="https://4ed42bcd9de142069657a04b0db4c13a@o4504110696824832.ingest.sentry.io/4504110699118592",
     integrations=[

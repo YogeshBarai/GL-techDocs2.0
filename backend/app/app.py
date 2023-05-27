@@ -52,7 +52,7 @@ sentry_sdk.init(
 
 app= Flask(__name__)
 CORS(app, resources={r"/*":{"origins":"*"}})
-app.config.from_object('config.ProdConfig')
+app.config.from_object('config.DevConfig')
 
 app.register_blueprint(register_bp)
 app.register_blueprint(documentVersionManagerBlueprint)
@@ -89,7 +89,7 @@ def health():
 @app.route("/details")
 def details():
 	hostname, ip = fetchDetails()
-	return render_template('index.html', HOSTNAME=hostname, IP=ip)
+	return render_template('home.html', HOSTNAME=hostname, IP=ip)
 
 if __name__ == '__main__':
 	app.run(debug=True)
