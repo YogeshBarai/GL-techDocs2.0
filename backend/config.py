@@ -20,6 +20,9 @@ class DevConfig(Config):
     DB_PASS=os.environ.get('DB_PASS')
     DB_PORT=os.environ.get('DB_PORT')
     DB=os.environ.get('DB')
+    DIR_ROOT=os.environ.get('DIR_ROOT')
+    DIR_DATA=os.environ.get('DIR_DATA')
+    DIR_LOG=os.environ.get('DIR_LOG')
 
 class ProdConfig(Config):
     FLASK_ENV='production'

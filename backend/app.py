@@ -29,6 +29,7 @@ from services.DocumentVersionManager.DocumentVersionManager import documentVersi
 from services.UserHistoryManager.UserHistoryManager import userHistoryManagerBlueprint
 from services.RazorpayIntegration.razorPay import razorPayBlueprint
 from services.Permissions.permissions import permissions_bp
+
 # For logging 
 from sentry_sdk.integrations.flask import FlaskIntegration
 
