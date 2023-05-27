@@ -12,7 +12,16 @@ class Config(object):
 class DevConfig(Config):
     FLASK_ENV='developement'
     DEBUG=True
-
+    SECRET=os.environ.get('SECRET')
+    DB_CONN=os.environ.get('DB_CONN')
+    DB_NAME=os.environ.get('DB_NAME')
+    DB_USER=os.environ.get('DB_USER')
+    DB_PASS=os.environ.get('DB_PASS')
+    DB_PORT=os.environ.get('DB_PORT')
+    DB=os.environ.get('DB')
+    DIR_ROOT=os.environ.get('DIR_ROOT')
+    DIR_DATA=os.environ.get('DIR_DATA')
+    DIR_LOG=os.environ.get('DIR_LOG')
 
 class ProdConfig(Config):
     FLASK_ENV='production'
