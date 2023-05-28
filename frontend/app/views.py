@@ -58,7 +58,9 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-   return render_template('user-dashboard/dashboard.html')
+   username = session.get('username')
+   print(username)
+   return render_template('user-dashboard/dashboard.html', username=username)
 
 @app.route('/registration')
 def registration():
@@ -95,6 +97,7 @@ def profile():
 @app.route('/saveUserToken',methods=['POST'])
 def saveToken():
    session['user'] = request.form['authToken']
+   session['username'] = request.form['username']
    return  make_response({'status':True}, 200)
 
 @app.route('/clearSession',methods=['POST'])
