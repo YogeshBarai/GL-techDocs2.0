@@ -1,6 +1,7 @@
-FROM python:3.9-slim
+FROM python:3.8-slim
+WORKDIR /app
 COPY . .
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
-WORKDIR /app
-CMD gunicorn --bind localhost:3306 --chdir /app app:app
+# CMD gunicorn --bind localhost:5000 --chdir /app app:app
+CMD ["python", "app.py"]
