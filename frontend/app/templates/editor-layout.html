@@ -65,7 +65,7 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item" ><a id="button-spellcheck" class="nav-link px-2 link-dark"><i class="bi bi-spellcheck"></i> Spell Check</a></li>
+          <li class="nav-item" ><a id="grammarCheckClick" data-bs-toggle="offcanvas" href="#offcanvasGrammarCheck" class="nav-link px-2 link-dark"><i class="bi bi-grammarcheck"></i> Grammar Check</a></li>
           <li class="nav-item" ><a id="button-pdf" class="nav-link px-2 link-dark"><i class="bi bi-download"></i> Download as PDF</a></li>
           <li class="nav-item" ><a data-bs-toggle="offcanvas" href="#offcanvasAssets"  class="nav-link px-2 link-dark"><i class="bi bi-paperclip"></i> Assets</a></li>
           <li class="nav-item"><a id="historyClick" data-bs-toggle="offcanvas" href="#offcanvasHistory" class="nav-link px-2 link-dark"><i class="bi bi-clock-history"></i> History</a></li>
@@ -144,6 +144,28 @@
   </div>
 </div>
 
+<!-- GRAMMAR CHECK RESULT DISPLAY -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasGrammarCheck" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Grammar Check Results</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="container" id="error-list">
+      <!-- Loop over grammar check results -->
+      <div class="error-item">
+        <div class="error-description">
+          <p>There is an error in your sentence.</p>
+        </div>
+        <div class="error-buttons">
+          <button class="btn btn-outline-secondary btn-sm">Change</button>
+        </div>
+      </div>
+      <!-- End of loop -->
+    </div>
+  </div>
+</div>
+
 
 <div class="container-x">
   <!-- <aside style="display: none !important;">
@@ -172,10 +194,10 @@
   <script> 
     $(document).ready(function(){
 
-      var spellCheckBtn = document.getElementById("button-spellcheck");
-      spellCheckBtn.addEventListener("click", function () {
-       spellCheck();
-      });
+      // var grammarCheckBtn = document.getElementById("button-grammarcheck");
+      // grammarCheckBtn.addEventListener("click", function () {
+      //  spellCheck();
+      // });
 
       var downloadPdfBtn = document.getElementById("button-pdf");
       downloadPdfBtn.addEventListener("click", function () {
@@ -216,6 +238,7 @@
 
   </script>
   <script src="../js/history.js"></script>
+  <script src="../js/grammarcheck.js"></script>
 
   {% block pageJS %}{% endblock%}
 
