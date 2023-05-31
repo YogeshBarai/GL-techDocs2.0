@@ -17,6 +17,7 @@ DB_USER=os.environ.get('DB_USER')
 DB_PASS=os.environ.get('DB_PASS')
 DB_PORT=os.environ.get('DB_PORT')
 DB=os.environ.get('DB')
+
 DB_URL = 'mysql+mysqlconnector://' + DB_USER + ':' + DB_PASS + '@' + DB_CONN + ':' + DB_PORT + '/' + DB_NAME # + '?host=' + DB_CONN + '?port=' + DB_PORT
 print(DB_URL)
 # else:
