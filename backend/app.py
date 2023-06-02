@@ -29,7 +29,6 @@ from services.DocumentVersionManager.DocumentVersionManager import documentVersi
 from services.UserHistoryManager.UserHistoryManager import userHistoryManagerBlueprint
 from services.RazorpayIntegration.razorPay import razorPayBlueprint
 from services.Permissions.permissions import permissions_bp
-
 # For logging 
 from sentry_sdk.integrations.flask import FlaskIntegration
 
@@ -52,9 +51,8 @@ sentry_sdk.init(
 )
 
 app= Flask(__name__)
-print(app)
-CORS(app)
-app.config.from_object('config.DevConfig')
+CORS(app, resources={r"/*":{"origins":"*"}})
+app.config.from_object('config.ProdConfig')
 
 app.register_blueprint(register_bp)
 app.register_blueprint(documentVersionManagerBlueprint)
