@@ -172,3 +172,9 @@ html {
   :not(pre) > code[class*="language-"], pre[class*="language-"] {
       background: #444;
   }
+
+  .highlight {
+    background-color: yellow;
+    font-weight: bold;
+  }
+  

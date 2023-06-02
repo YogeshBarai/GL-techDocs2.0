@@ -145,23 +145,14 @@
 </div>
 
 <!-- GRAMMAR CHECK RESULT DISPLAY -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasGrammarCheck" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasGrammarCheck" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Grammar Check Results</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     <div class="container" id="error-list">
-      <!-- Loop over grammar check results -->
-      <div class="error-item">
-        <div class="error-description">
-          <p>There is an error in your sentence.</p>
-        </div>
-        <div class="error-buttons">
-          <button class="btn btn-outline-secondary btn-sm">Change</button>
-        </div>
-      </div>
-      <!-- End of loop -->
+      
     </div>
   </div>
 </div>
@@ -193,12 +184,6 @@
 
   <script> 
     $(document).ready(function(){
-
-      // var grammarCheckBtn = document.getElementById("button-grammarcheck");
-      // grammarCheckBtn.addEventListener("click", function () {
-      //  spellCheck();
-      // });
-
       var downloadPdfBtn = document.getElementById("button-pdf");
       downloadPdfBtn.addEventListener("click", function () {
        generateHTMLContent('print');
