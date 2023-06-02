@@ -89,7 +89,7 @@ def health():
 @app.route("/details")
 def details():
 	hostname, ip = fetchDetails()
-	return render_template('index.html', HOSTNAME=hostname, IP=ip)
+	return render_template('home.html', HOSTNAME=hostname, IP=ip)
 
 if __name__ == '__main__':
 	app.run(debug=True)
