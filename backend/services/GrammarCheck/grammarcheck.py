@@ -17,7 +17,7 @@ def convert_latex(latex_code):
 @grammarCheckerBlueprint.route("/check-grammar", methods=["POST"])
 def check_grammar():
     # Get the LaTeX document from the request
-    latex_document = request.json.get("latext_code")
+    latex_document = request.json.get("latex_code")
     # Convert LaTex to simple text
     text = convert_latex(latex_document)
 
