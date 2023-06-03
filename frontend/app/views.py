@@ -1,6 +1,7 @@
 from flask import render_template, request, url_for,session 
 from flask import make_response, redirect
 from app import app
+from cryptography.fernet import Fernet
 
 
 
@@ -10,6 +11,37 @@ from app import app
 #        return function(*args, **kwargs) if session.get('user') else abort(401)
 #    return wrapper
 
+key = Fernet.generate_key()
+
+def encrypt_username(username):
+    f = Fernet(key)
+
+    # Encrypt the username
+    encrypted_username = f.encrypt(username.encode('utf-8'))
+
+    # Return the encrypted username as a string
+    return encrypted_username.decode('utf-8')
+
+def decrypt_username(encrypted_username):
+    f = Fernet(key)
+
+    # Decrypt the encrypted username
+    decrypted_username = f.decrypt(encrypted_username.encode('utf-8'))
+
+    # Return the decrypted username as a string
+    return decrypted_username.decode('utf-8')
+
+
+
+@app.context_processor
+def inject_user():
+    isAuthenticated = False
+    username = None
+    # Check if the user is authenticated based on session
+    if 'user' in session:
+        isAuthenticated = True
+        username = decrypt_username(session.get('username'))
+    return dict(isAuthenticated=isAuthenticated, username=username)
 
 def login_required(f):
     
@@ -95,6 +127,7 @@ def profile():
 @app.route('/saveUserToken',methods=['POST'])
 def saveToken():
    session['user'] = request.form['authToken']
+   session['username'] = encrypt_username(request.form['username'])
    return  make_response({'status':True}, 200)
 
 @app.route('/clearSession',methods=['POST'])
