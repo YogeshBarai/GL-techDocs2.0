@@ -1,8 +1,12 @@
-{% extends "marketing-layout.html" %}
-
 {% block pageCss%}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/pricing.css') }}">
 {% endblock %}
+
+{% if isAuthenticated %}
+  {% include 'dashboard-layout.html' %}
+{% else %}
+  {% include 'marketing-layout.html' %}
+{% endif %}
 
 {% block body %}
 <div class="container mt-5">

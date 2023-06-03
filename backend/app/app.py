@@ -7,7 +7,7 @@
 from distutils.log import debug
 from flask_bcrypt import Bcrypt
 import sentry_sdk
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, session
 import socket
 import yaml
 import sys
