@@ -38,7 +38,7 @@ def inject_user():
     isAuthenticated = False
     username = None
     # Check if the user is authenticated based on session
-    if 'user' in session:
+    if 'username' in session:
         isAuthenticated = True
         username = decrypt_username(session.get('username'))
     return dict(isAuthenticated=isAuthenticated, username=username)
