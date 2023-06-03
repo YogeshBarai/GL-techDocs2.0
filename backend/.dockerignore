@@ -2,7 +2,5 @@ venv/
 __pycache__/
 .git
 .gitignore
-.env
-.env.local
 TestScripts/
 Schema/
