@@ -8,12 +8,11 @@ $(document).ready(function() {
 });
 
 
-function saveTokenInSession(AUT, username)
+function saveTokenInSession(AUT)
 {
     $.ajax({
         data:{
-            authToken:AUT,
-            username:username
+            authToken:AUT
         },
         type:'POST',
         url:getFrontEndUrl('saveUserToken'),
@@ -52,7 +51,7 @@ function callLoginApi(loginFormData,errordiv)
                 localStorage.setItem('userToken', data.userAuthToken);
                 //Saving email for further references for calling backend url.
                 localStorage.setItem('email', $('#email-input').val());
-                saveTokenInSession(data.userAuthToken,  data.FirstName + " " + data.LastName);
+                saveTokenInSession(data.userAuthToken);
           },
           error:function(data) {
             // in case of error we need to read response from data.responseJSON

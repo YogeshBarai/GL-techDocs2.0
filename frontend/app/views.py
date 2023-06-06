@@ -127,7 +127,6 @@ def profile():
 @app.route('/saveUserToken',methods=['POST'])
 def saveToken():
    session['user'] = request.form['authToken']
-   session['username'] = encrypt_username(request.form['username'])
    return  make_response({'status':True}, 200)
 
 @app.route('/clearSession',methods=['POST'])
