@@ -4,6 +4,9 @@ $(document).ready(function () {
   // Event listener for the grammar check button click
   $('#grammarCheckClick').on('click', function (event) {
     try {
+      // Clear the error-list div
+      $('#error-list').empty();
+
       var inputLatexCode = document.getElementById('editor-text').value
       var latexInputData = { "latex_code": inputLatexCode };
       console.log("Sending LaTeX data for Grammar check:", latexInputData);
@@ -16,27 +19,23 @@ $(document).ready(function () {
         url: getApiUrl('check-grammar'),
         success: function (data) {
           console.log("Grammar Check Success!!", data);
-          var errorItem = $('<div class="error-item"></div>');
-          var errorDescription = $('<div class="error-description"></div>');
-          var noErrorsFound = $('<p></p>').text('No Errors Found!');
 
-          // Clear the error list initially
-          $('#error-description').html('');
-          if (data.length > 0){
-            // Build the HTML for each grammar check result
+          if (data.length > 0) {
             data.forEach(function (result) {
-              var errorWord = $('<p></p>').text(result.result['incorrect-word']);
+              var errorItem = $('<div class="error-item"></div>');
+              var errorDescription = $('<div class="error-description"></div>');
+              var errorWord = $('<p class="error-word"></p>').text(result.result['incorrect-word']);
               var replacements = result.result.replacements;
-  
+
               errorDescription.append(errorWord);
-  
+
               if (replacements.length > 0) {
-                var replacementsList = $('<ul></ul>');
-  
+                var replacementsList = $('<ul class="replacements-list"></ul>');
+
                 replacements.forEach(function (replacement) {
-                  var replacementItem = $('<li></li>');
+                  var replacementItem = $('<li class="replacement-item"></li>');
                   var replacementLink = $('<a href="#" class="replacement-link"></a>').text(replacement.value);
-  
+
                   replacementLink.on('click', function (e) {
                     e.preventDefault();
                     // Replace the incorrect word with the selected replacement
@@ -44,41 +43,31 @@ $(document).ready(function () {
                     // Update the editor or perform any desired action with the modified text
                     document.getElementById('editor-text').value = newText;
                   });
-  
+
                   replacementItem.append(replacementLink);
                   replacementsList.append(replacementItem);
                 });
-  
+
                 errorDescription.append(replacementsList);
               }
-  
-              var changeButton = $('<button class="btn btn-outline-secondary btn-sm">Change</button>');
-              changeButton.on('click', function () {
-                // Replace the incorrect word with the first replacement
-                var newText = inputLatexCode.replace(result.result['incorrect-word'], replacements[0].value);
-                // Update the editor or perform any desired action with the modified text
-                document.getElementById('editor-text').value = newText;
-              });
-  
+
               errorItem.append(errorDescription);
-              errorItem.append(changeButton);
               $('#error-list').append(errorItem);
-  
+
               // Event listener for mouseenter event to highlight the error word
               errorDescription.on('mouseenter', function () {
                 highlightWord(result.result['incorrect-word']);
               });
-  
+
               // Event listener for mouseleave event to clear the highlight
               errorDescription.on('mouseleave', function () {
                 clearHighlights();
               });
             });
-          } else{
+          } else {
             console.log('No errors found!');
-            errorDescription.append(noErrorsFound); 
-            errorItem.append(errorDescription);
-            $('#error-list').append(errorItem);
+            var noErrorsFound = $('<p class="no-errors-found"></p>').text('No Errors Found!');
+            $('#error-list').append(noErrorsFound);
           }
         },
         error: function (data) {
@@ -90,7 +79,11 @@ $(document).ready(function () {
       console.log(e);
     }
   });
+
+  // Rest of the code
+  // ...
 });
+
 
 // Function to highlight a specific word in the editor
 function highlightWord(word) {

@@ -1,8 +1,8 @@
 
 $(document).ready(function() {
     $('#email-login').on('submit', function(event) {
-       loginButtonClicked();
-       event.preventDefault();
+        loginButtonClicked();
+        event.preventDefault();
      
      });
 });
@@ -45,7 +45,7 @@ function callLoginApi(loginFormData,errordiv)
            type : 'POST',
            url : getApiUrl('signin'),
            success: function(data) {
-            //In case of success the data contains the JSON
+                //In case of success the data contains the JSON
 
                 
                 localStorage.setItem('userToken', data.userAuthToken);

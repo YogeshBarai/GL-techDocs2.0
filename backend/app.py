@@ -54,7 +54,7 @@ sentry_sdk.init(
 
 app= Flask(__name__)
 print(app)
-CORS(app)
+CORS(app, resources={r"/*":{"origins":"*"}})
 app.config.from_object('config.DevConfig')
 
 app.register_blueprint(register_bp)
@@ -82,7 +82,7 @@ def fetchDetails():
 # This is main / landing page API 
 @app.route("/")
 def hello_world():
-	return "<h3>TechDocs API server</h3>"
+	return "<h3>TechDocs API server Outter APP</h3>"
 
 # This is for endpoint "Health" to healthcheck the container health in microservices
 @app.route("/health")
