@@ -38,10 +38,21 @@ $(document).ready(function () {
 
                   replacementLink.on('click', function (e) {
                     e.preventDefault();
+                    console.log('Start replacement....');
+                    console.log({editorText: document.getElementById('editor-text').value});
                     // Replace the incorrect word with the selected replacement
-                    var newText = result.originalText.replace(result.result['incorrect-word'], replacement.value);
+                    var newText = document.getElementById('editor-text').value.replace(result.result['incorrect-word'], replacement.value);
+                    console.log({newText});
                     // Update the editor or perform any desired action with the modified text
                     document.getElementById('editor-text').value = newText;
+                    documentObject.DocText = newText;
+                    console.log({updatedEditorText: document.getElementById('editor-text').value});
+                    console.log(documentObject.DocText);
+                    // documentObject.DocText = document.getElementById('editor-text').value
+                    // console.log(documentObject.DocText);
+                    console.log('Save updated document....');
+                    saveFile();
+                    location.reload();
                   });
 
                   replacementItem.append(replacementLink);
