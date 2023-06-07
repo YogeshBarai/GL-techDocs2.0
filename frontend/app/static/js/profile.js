@@ -12,6 +12,7 @@ function updateProfile(data) {
     usageStats = data.usageStats;
     $('#first-name').val(userData.firstName);
     $('#last-name').val(userData.lastName);
+    $('#logged-in-username').text(userData.firstName + ' ' + userData.lastName);
     $('#address').val(userData.address.streetAddress);
     $('#country').val(userData.address.country);
     $('#country').selectpicker('refresh');

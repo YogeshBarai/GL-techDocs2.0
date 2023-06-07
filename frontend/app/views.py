@@ -1,7 +1,6 @@
 from flask import render_template, request, url_for,session 
 from flask import make_response, redirect
 from app import app
-from cryptography.fernet import Fernet
 
 
 
@@ -10,38 +9,6 @@ from cryptography.fernet import Fernet
 #    def wrapper(*args, **kwargs):
 #        return function(*args, **kwargs) if session.get('user') else abort(401)
 #    return wrapper
-
-key = Fernet.generate_key()
-
-def encrypt_username(username):
-    f = Fernet(key)
-
-    # Encrypt the username
-    encrypted_username = f.encrypt(username.encode('utf-8'))
-
-    # Return the encrypted username as a string
-    return encrypted_username.decode('utf-8')
-
-def decrypt_username(encrypted_username):
-    f = Fernet(key)
-
-    # Decrypt the encrypted username
-    decrypted_username = f.decrypt(encrypted_username.encode('utf-8'))
-
-    # Return the decrypted username as a string
-    return decrypted_username.decode('utf-8')
-
-
-
-@app.context_processor
-def inject_user():
-    isAuthenticated = False
-    username = None
-    # Check if the user is authenticated based on session
-    if 'username' in session:
-        isAuthenticated = True
-        username = decrypt_username(session.get('username'))
-    return dict(isAuthenticated=isAuthenticated, username=username)
 
 def login_required(f):
     
@@ -57,7 +24,9 @@ def login_required(f):
 def home():
    return render_template('home-page/home.html')
 
-
+@app.route('/home2')
+def home2():
+   return render_template('home-page/home2.html')
 
 @app.route('/register')
 def register():
@@ -81,6 +50,7 @@ def reset_password():
    return render_template('forgotpassword/resetpassword.html')
 
 @app.route('/logout')
+@login_required
 def logout():
    # session.clear()
    [session.pop(key) for key in list(session.keys())]
