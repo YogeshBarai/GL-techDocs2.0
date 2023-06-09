@@ -6,12 +6,12 @@ import { mockhandlers as forgotpasswordHandlers } from "./mocks/mockforgotpasswo
 import { mockhandlers as validTokenHandlers } from "./mocks/mockvalidtoken.js";
 import { mockhandlers as resetPasswordHandlers } from "./mocks/mockresetpassword.js";
 var mockhandlers = [];
-mockhandlers.push(...loginhandlers,
-                  ...profilehandlers,
-                  ...deletehandlers,
-                  ...forgotpasswordHandlers,
-                  ...validTokenHandlers,
-                  ...resetPasswordHandlers);
+// mockhandlers.push(...loginhandlers,
+//                   ...profilehandlers,
+//                   ...deletehandlers,
+//                   ...forgotpasswordHandlers,
+//                   ...validTokenHandlers,
+//                   ...resetPasswordHandlers);
 
 var mockjaxhandlers = $.mockjax(
     mockhandlers

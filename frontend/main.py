@@ -1,4 +1,4 @@
-import imp
+import importlib
 from app import app
 
 @app.after_request

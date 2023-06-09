@@ -1,18 +1,19 @@
 
 $(document).ready(function() {
     $('#email-login').on('submit', function(event) {
-       loginButtonClicked();
-       event.preventDefault();
+        loginButtonClicked();
+        event.preventDefault();
      
      });
 });
 
 
-function saveTokenInSession(AUT)
+function saveTokenInSession(AUT, username)
 {
     $.ajax({
         data:{
-            authToken:AUT
+            authToken:AUT,
+            loggedInUserName: username
         },
         type:'POST',
         url:getFrontEndUrl('saveUserToken'),
@@ -45,13 +46,14 @@ function callLoginApi(loginFormData,errordiv)
            type : 'POST',
            url : getApiUrl('signin'),
            success: function(data) {
-            //In case of success the data contains the JSON
+                //In case of success the data contains the JSON
 
-                
+                var username = data.FirstName + " " + data.LastName;
                 localStorage.setItem('userToken', data.userAuthToken);
                 //Saving email for further references for calling backend url.
                 localStorage.setItem('email', $('#email-input').val());
-                saveTokenInSession(data.userAuthToken);
+                localStorage.setItem('loggedInUserName', username);
+                saveTokenInSession(data.userAuthToken, username);
           },
           error:function(data) {
             // in case of error we need to read response from data.responseJSON

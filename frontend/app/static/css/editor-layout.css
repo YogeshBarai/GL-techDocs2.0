@@ -172,3 +172,47 @@ html {
   :not(pre) > code[class*="language-"], pre[class*="language-"] {
       background: #444;
   }
+
+  .highlight {
+    background-color: yellow;
+    font-weight: bold;
+  }
+  
+  .error-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+  }
+  
+  .error-word {
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 5px;
+  }
+  
+  .replacements-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+  
+  .replacement-item {
+    margin-bottom: 5px;
+  }
+  
+  .replacement-link {
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .replacement-link:hover {
+    text-decoration: underline;
+  }
+  
+  .no-errors-found {
+    font-style: italic;
+    color: #2ecc71;
+    margin-bottom: 10px;
+  }
+  

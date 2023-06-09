@@ -673,19 +673,18 @@ def file_view(user_id):
                 session = session_factory()
                 sql_stmt = (select(Document.FilePath, Document.DocName, Document.Version).where(Document.DocId==docid))
                 result = session.execute(sql_stmt)
-                session.close()
 
                 #There will be 1 row only as we fetched using first()
-                for row in result:
+                for row in result.fetchall():
                     file_path = row.FilePath
                     doc_ver = row.Version
                     doc_name = row.DocName
-                
+
                 # dry run testing - request from front end people to send out username instead of userid
                 sql_stmt = (select(User.UserName).where(User.UserId == userid))
                 sql_result = session.execute(sql_stmt)
                 # there is always only 1 row
-                for row in sql_result:
+                for row in sql_result.fetchall():
                     username = row[0]
                 
                 with open(file_path,'r') as f:
@@ -696,6 +695,9 @@ def file_view(user_id):
         except:
             data_out = {"message":"Unknown Exception caught. Check logs"}
             mess_out = 500
+        finally:
+            session.close()
+            
     return make_response(jsonify(data_out), mess_out)
 
 '''

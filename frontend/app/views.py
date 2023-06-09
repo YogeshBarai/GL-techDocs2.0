@@ -10,7 +10,6 @@ from app import app
 #        return function(*args, **kwargs) if session.get('user') else abort(401)
 #    return wrapper
 
-
 def login_required(f):
     
    def wrap(*args, **kwargs):
@@ -25,7 +24,9 @@ def login_required(f):
 def home():
    return render_template('home-page/home.html')
 
-
+@app.route('/home2')
+def home2():
+   return render_template('home-page/home2.html')
 
 @app.route('/register')
 def register():
@@ -49,6 +50,7 @@ def reset_password():
    return render_template('forgotpassword/resetpassword.html')
 
 @app.route('/logout')
+@login_required
 def logout():
    # session.clear()
    [session.pop(key) for key in list(session.keys())]
