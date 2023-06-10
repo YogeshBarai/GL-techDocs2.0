@@ -48,6 +48,8 @@ In the appendix, the API as well as the format of custom macro definitions in Ja
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
   integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/plagarismcheck.js"></script>
 <script>
   var params = {{ params| tojson | safe}}
   var template = params.hasOwnProperty('template') ? params.template : '';
@@ -69,7 +71,36 @@ In the appendix, the API as well as the format of custom macro definitions in Ja
     window.$editor = document.getElementById('editor-text');
     window.$htmlPreview = document.getElementById('html-preview');
     documentObject.DocText = $editor.textContent;
+
+    const ctx = document.getElementById('myChart');
+    const ctx2 = document.getElementById('plagarism-value');
+    ctx2.innerHTML = 0;
+    var yValues = [0, 100];
+    var barColors = [
+        "#e00741",
+        "#28a82f",
+        
+    ];
+    const chart = new Chart(ctx, {
+      type: "doughnut",
+      data: {
+      datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+      }]
+      },
+      options: {
+      plugins: {
+          legend: {
+          position: 'right',
+          align: 'center'
+          }
+      }
+      }
+    });
+    plagarismcheck(chart);
     $editor.addEventListener('keyup', _.debounce(function (event) {
+      plagarismcheck(chart);
       generateHTMLContent('preview');
     }, 300));
 
