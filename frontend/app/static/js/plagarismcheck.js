@@ -1,11 +1,8 @@
 function plagarismcheck(chart){
-    try {
-        // Clear the error-list div
-        $('#error-list').empty();
-  
+    try {  
         var inputLatexCode = document.getElementById('editor-text').value
         var latexInputData = { "latex_code": inputLatexCode };
-        console.log("Sending LaTeX data for Grammar check:", latexInputData);
+        console.log("Sending LaTeX data for plagiarism check:", latexInputData);
   
         $.ajax({
           data: JSON.stringify(latexInputData),

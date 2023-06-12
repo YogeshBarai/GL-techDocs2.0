@@ -7,6 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import requests
 import re
+from pylatexenc.latex2text import LatexNodes2Text
 
 plagiarismCheckerBlueprint = Blueprint('PlagiarismChecker',__name__)
 
@@ -62,6 +63,10 @@ def search_text(query):
 
     return []
 
+def convert_latex(latex_code):
+    text = LatexNodes2Text().latex_to_text(latex_code)
+    return text
+
 def check_plagiarism_with_search(latex_doc, threshold=0, num_results=5):
     search_results = search_text(latex_doc)[:num_results]
 
@@ -69,9 +74,10 @@ def check_plagiarism_with_search(latex_doc, threshold=0, num_results=5):
     for result in search_results:
         similarity = calculate_similarity(latex_doc, result)
         similarity_scores.append(similarity)
-    print(similarity_scores)
-    average_similarity = sum(similarity_scores) / len(similarity_scores)
-    print(average_similarity)
+    if len(similarity_scores) > 0:
+        average_similarity = sum(similarity_scores) / len(similarity_scores)
+    else:
+        average_similarity = 0
     if average_similarity >= threshold:
         return True, average_similarity
     else:
@@ -79,13 +85,17 @@ def check_plagiarism_with_search(latex_doc, threshold=0, num_results=5):
 
 @plagiarismCheckerBlueprint.route('/check-plagiarism', methods=['POST'])
 def plagiarism_check():
-    latex_doc = request.json.get("latex_code")
-
-    is_plagiarized, score = check_plagiarism_with_search(latex_doc)
-
-    response = {
-        'is_plagiarized': is_plagiarized,
-        'score': score
-    }
-
-    return jsonify(response)
+    latex_document = request.json.get("latex_code")
+    text = convert_latex(latex_document)
+    is_plagiarized = False
+    score = 0
+    try:
+        is_plagiarized, score = check_plagiarism_with_search(text)
+    except Exception as e:
+        print(e)
+    finally:
+        response = {
+            'is_plagiarized': is_plagiarized,
+            'score': score
+        }
+        return jsonify(response)
