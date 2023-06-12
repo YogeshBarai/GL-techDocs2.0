@@ -30,6 +30,7 @@ from services.UserHistoryManager.UserHistoryManager import userHistoryManagerBlu
 from services.RazorpayIntegration.razorPay import razorPayBlueprint
 from services.Permissions.permissions import permissions_bp
 from services.GrammarCheck.grammarcheck import grammarCheckerBlueprint
+from services.PlagiarismChecker.plagiarismchecker import plagiarismCheckerBlueprint
 
 # For logging 
 from sentry_sdk.integrations.flask import FlaskIntegration
@@ -72,6 +73,7 @@ app.register_blueprint(mail_bp)
 app.register_blueprint(razorPayBlueprint)
 app.register_blueprint(permissions_bp)
 app.register_blueprint(grammarCheckerBlueprint)
+app.register_blueprint(plagiarismCheckerBlueprint)
 
 # This function get the hostname and IP deatils of server, required for microservices
 def fetchDetails():
