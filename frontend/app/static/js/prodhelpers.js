@@ -1,4 +1,4 @@
-var rootTestApiUrl = "http://localhost:5000/"
+var rootTestApiUrl = "http://localhost:5000/api/"
 var rootApiUrl = "http://techdocs-api.previewbox.in/api/";
 var testing=true;
 //56733

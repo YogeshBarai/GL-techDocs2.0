@@ -117,12 +117,37 @@
     margin-bottom: 5px;
   }
 
-  .cta-section {
-    text-align: center;
-    margin-top: 50px;
-  }
+.cta-section {
+  text-align: center;
+  margin-top: 50px;
+}
 
-  .cta-message {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+.cta-message {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.carousel-indicators li {
+  background-color: #050000 !important; /* Set your desired color here */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 6px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-indicators .active {
+  background-color: #00ff00 !important; /* Set your desired color for the active indicator here */
+}

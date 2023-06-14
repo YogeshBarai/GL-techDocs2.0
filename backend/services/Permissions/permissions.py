@@ -24,7 +24,7 @@ engine = sqlalchemy.create_engine(url)
 connect = engine.connect()
 
 
-@permissions_bp.route('/get_permissions', methods=['GET'])
+@permissions_bp.route('/api/get_permissions', methods=['GET'])
 @authentication
 def get_permissions(user_id):
     content = request.get_json(silent=True)
@@ -32,7 +32,7 @@ def get_permissions(user_id):
     user_perm = get_user_permissions(user_id, doc_id)[0]
     return jsonify(UP=user_perm)
 
-@permissions_bp.route('/set_permissions', methods=['POST'])
+@permissions_bp.route('/api/set_permissions', methods=['POST'])
 @authentication
 def set_permissions(user_id):
     '''

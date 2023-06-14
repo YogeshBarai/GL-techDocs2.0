@@ -83,7 +83,7 @@ def check_plagiarism_with_search(latex_doc, threshold=0, num_results=5):
     else:
         return False, average_similarity
 
-@plagiarismCheckerBlueprint.route('/check-plagiarism', methods=['POST'])
+@plagiarismCheckerBlueprint.route('/api/check-plagiarism', methods=['POST'])
 def plagiarism_check():
     latex_document = request.json.get("latex_code")
     text = convert_latex(latex_document)

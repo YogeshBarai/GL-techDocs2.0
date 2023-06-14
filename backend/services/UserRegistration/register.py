@@ -16,7 +16,7 @@ register_bp = Blueprint('UserRegister',__name__)
 
 
 
-@register_bp.route('/register', methods=['GET','POST'])
+@register_bp.route('/api/register', methods=['GET','POST'])
 def register():
     currentDateTime = datetime.now(pytz.timezone('Asia/Kolkata'))
     currentDate = currentDateTime.today()

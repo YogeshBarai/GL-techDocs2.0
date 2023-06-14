@@ -21,7 +21,7 @@ from sqlalchemy import create_engine, select, update
 
 userLogin_bp = Blueprint('login',__name__)
 
-@userLogin_bp.route('/signin', methods=['GET', 'POST'])
+@userLogin_bp.route('/api/signin', methods=['GET', 'POST'])
 def signin():
     bcrypt = Bcrypt(current_app)
     if request.method == 'POST':

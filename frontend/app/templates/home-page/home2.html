@@ -2,13 +2,14 @@
 
 {% block pageCss %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home2.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
 {% endblock %}
 
 {% block body %}
 
 <section class="hero-section">
   <div class="container">
-    <h1 class="hero-title">Welcome to LaTeXCollab</h1>
+    <h1 class="hero-title">Welcome to TechDocs</h1>
     <p class="hero-description">The ultimate platform for collaborative LaTeX writing</p>
     <a href="{{ url_for('registration') }}" class="cta-button">Get Started</a>
   </div>
@@ -40,16 +41,43 @@
 <section class="testimonial-section">
   <div class="container">
     <h2>Testimonials</h2>
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <p class="testimonial-text">"LaTeXCollab has transformed the way our team collaborates on research papers. It's intuitive, efficient, and has greatly improved our productivity."</p>
-        <p class="testimonial-author">John Doe, Professor</p>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <ol class="carousel-indicators justify-content-center" style="color: #e80909">
+        <li data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></li>
+        <li data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></li>
+        <!-- Add more li elements for additional testimonials -->
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <p class="testimonial-text">"TechDocs has transformed the way our team collaborates on research papers. It's intuitive, efficient, and has greatly improved our productivity."</p>
+          <p class="testimonial-author">Dr. ABC, Professor</p>
+        </div>
+        <div class="carousel-item">
+          <p class="testimonial-text">"The collaboration features of TechDocs are excellent. It makes writing LaTeX documents with my colleagues a breeze. Highly recommended!"</p>
+          <p class="testimonial-author">XYZ, Researcher</p>
+        </div>
+        <div class="carousel-item">
+          <p class="testimonial-text">"Simple to use!"</p>
+          <p class="testimonial-author">DEF, Student</p>
+        </div>
+        <!-- Add more carousel-item divs for additional testimonials -->
       </div>
+      <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="pricing-section">
+
+
+<section id="pricing-section" class="pricing-section">
   <div class="container">
     <h2 class="pricing-title">Choose Your Plan</h2>
     <div class="pricing-plans">
@@ -87,7 +115,7 @@
 {% endblock %}
 
 {% block pageJS %}
-<script>
-  // Your custom JavaScript code can be placed here
-</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
 {% endblock %}

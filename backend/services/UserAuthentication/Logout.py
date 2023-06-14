@@ -19,7 +19,7 @@ from sqlalchemy import create_engine, select, update
 
 userLogout_bp = Blueprint('logout',__name__)
 
-@userLogout_bp.route('/signout', methods=["GET", "POST"])
+@userLogout_bp.route('/api/signout', methods=["GET", "POST"])
 #check for user authorisation
 @authentication
 def signout(user_id):
