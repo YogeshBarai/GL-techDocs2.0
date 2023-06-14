@@ -49,5 +49,5 @@ async function logoutButtonClicked()
     else{
         window.alert('bad request');
     }
-    window.location.replace('/');
+    window.location.replace('/home2');
 }
