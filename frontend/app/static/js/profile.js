@@ -139,11 +139,11 @@ function clearSession() {
         url: getFrontEndUrl('clearSession'),
         success: async function (data) {
             await new Promise(r => setTimeout(r, 2000));
-            window.location.replace('/home2');
+            window.location.replace('/');
         },
         error: async function (data) {
             await new Promise(r => setTimeout(r, 2000));
-            window.location.replace('/home2');
+            window.location.replace('/');
         }
     });
 }
