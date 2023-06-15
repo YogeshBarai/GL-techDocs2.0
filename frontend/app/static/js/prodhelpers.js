@@ -1,10 +1,10 @@
-var rootTestApiUrl = "http://0.0.0.0:8000/api/"
+var rootTestApiUrl = "http://107.20.119.87:8000/api/"
 var rootApiUrl = "http://techdocs-api.previewbox.in/api/";
 var testing=true;
 //56733
 //6622
 var rootFrontEndUrl = "http://techdocs.previewbox.in/";
-var rootFrontEndTestUrl = "http://0.0.0.0:56733/";
+var rootFrontEndTestUrl = "http://107.20.119.87:56733/";
 function getApiUrl(api)
 {
     if (testing)
