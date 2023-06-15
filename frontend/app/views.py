@@ -22,7 +22,7 @@ def login_required(f):
 
 @app.route('/')
 def home():
-   return render_template('home-page/home.html')
+   return render_template('home-page/home2.html')
 
 @app.route('/home2')
 def home2():
