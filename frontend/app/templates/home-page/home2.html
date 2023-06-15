@@ -1,4 +1,8 @@
-{% extends "marketing-layout.html" %}
+{% if isAuthenticated %}
+  {% include 'dashboard-layout.html' %}
+{% else %}
+  {% include 'marketing-layout.html' %}
+{% endif %}
 
 {% block pageCss %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home2.css') }}">
@@ -75,42 +79,47 @@
   </div>
 </section>
 
-
-
-<section id="pricing-section" class="pricing-section">
+<!-- <section id="pricing-section" class="pricing-section">
   <div class="container">
     <h2 class="pricing-title">Choose Your Plan</h2>
     <div class="pricing-plans">
       <div class="pricing-plan">
-        <h3 class="plan-name">Free</h3>
-        <p class="plan-price">$0/month</p>
+        <h3 class="plan-name">Standard</h3>
+        <p>Free Plan</p>
+        <p class="plan-price"><span class="rupee">&#8377</span>0/month</p>
         <ul class="plan-features">
           <li class="plan-feature">Real-time Collaboration</li>
           <li class="plan-feature">Basic Editing Tools</li>
           <li class="plan-feature">Limited Templates</li>
+          <li class="plan-feature">Convert to PDF</li>
+          <li class="plan-feature">Grammar check</li>
+          <li class="plan-feature">Plagiarism Score</li>
         </ul>
         <a href="{{ url_for('registration') }}" class="cta-button">Sign Up</a>
       </div>
       <div class="pricing-plan">
-        <h3 class="plan-name">Pro</h3>
-        <p class="plan-price">$9.99/month</p>
+        <h3 class="plan-name">Premium</h3>
+        <p>Get More Features</p>
+        <p class="plan-price"><span class="rupee">&#8377</span>199/month</p>
         <ul class="plan-features">
-          <li class="plan-feature">Real-time Collaboration</li>
+          <li class="plan-feature">Everything in Standard Plan +</li>
           <li class="plan-feature">Advanced Editing Tools</li>
           <li class="plan-feature">Full Template Library</li>
+          <li class="plan-feature">Digital Signatures</li>
+          <li class="plan-feature">Advanced Plagiarism Check</li>
         </ul>
         <a href="{{ url_for('registration') }}" class="cta-button">Sign Up</a>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
-<section class="cta-section">
+<!-- <section class="cta-section">
   <div class="container">
     <h2 class="cta-message">Ready to collaborate on LaTeX documents?</h2>
     <a href="{{ url_for('registration') }}" class="cta-button">Get Started</a>
   </div>
-</section>
+</section> -->
 
 {% endblock %}
 
