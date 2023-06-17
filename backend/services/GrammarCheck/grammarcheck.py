@@ -14,7 +14,7 @@ def convert_latex(latex_code):
     text = LatexNodes2Text().latex_to_text(latex_code)
     return text
 
-@grammarCheckerBlueprint.route("/check-grammar", methods=["POST"])
+@grammarCheckerBlueprint.route("/api/check-grammar", methods=["POST"])
 def check_grammar():
     # Get the LaTeX document from the request
     latex_document = request.json.get("latex_code")
